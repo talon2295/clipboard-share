@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,8 +14,14 @@ export class AppComponent implements OnInit {
     }
     ngOnInit(): void {
         setInterval(async () => {
-            console.log(this._electronService.clipboard.readText())
-            //this.clipData.push(clipboard.readSync())
+            if(this._electronService.isElectronApp) {
+                let rt = this._electronService.clipboard.readText()
+                //let fl = this._electronService.clipboard.read()
+                console.log(rt, this._electronService.clipboard.availableFormats())
+            }
+            else {
+                console.log("not electrron")
+            }
         }, 1000)
     }
 }
