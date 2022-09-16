@@ -24,4 +24,8 @@ export class AppComponent implements OnInit {
             }
         }, 1000)
     }
+
+    closeWindow() {
+        window?.close()
+    }
 }

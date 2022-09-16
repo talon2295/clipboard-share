@@ -8,17 +8,14 @@ function createWindow () {
     mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
+        frame: false,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false
         }
     })
 
-    mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, `/dist/clipboard-share/index.html`),
-        protocol: "file:",
-        slashes: true
-    }));
+    mainWindow.loadURL(path.join(__dirname, `/dist/clipboard-share/index.html`));
     // Open the DevTools.
     mainWindow.webContents.openDevTools()
 
